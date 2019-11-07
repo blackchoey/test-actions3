@@ -1,0 +1,21 @@
+name: Mark stale issues and pull requests
+
+on:
+  schedule:
+  - cron: "* * * * *"
+
+jobs:
+  stale:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: blackchoey/stale@chyuan/debug
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        stale-issue-message: 'Stale issue message'
+        stale-issue-label: 'no-issue-activity'
+        only-labels: 'need info'
+        days-before-stale: 0
+        last-updated-user-type: 'collaborator'
+        days-before-close: 0
